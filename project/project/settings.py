@@ -125,26 +125,35 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 PAGINATE_BY = 2
 
 # //////////////////////////////////////////////////////////////////////////////
-from decouple import config
+# from decouple import config
+
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587 #TLS
+# EMAIL_USE_TLS = True
+# # EMAIL_USE_SSL = True - 465
+# EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+# //////////////////////////////////////////////////////////////////////////////////////////
+
+# es cadet tu config ar imushavebs
+# pip install django-environ
+import environ
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587 #TLS
+EMAIL_PORT = 587  # TLS
 EMAIL_USE_TLS = True
-# EMAIL_USE_SSL = True - 465
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+# EMAIL_USE_SSL = True  # Port 465 if using SSL
 
-# es cadet tu config ar imushavebs
-# pip install django-environ
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
-# import environ
-# env = environ.Env()
-# environ.Env.read_env()
-
-# EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 # ///////////////////////////////////////////////////////////////////////////////////////////////
 
